@@ -1,5 +1,7 @@
 import React from 'react'
 import './Playlist.css';
+import Button from 'react-bootstrap/Button';
+
 
 const Playlist = ({ key, url, title, artist, album }) => {
     return (
@@ -9,6 +11,7 @@ const Playlist = ({ key, url, title, artist, album }) => {
                 <img className='image' src={url} alt="image" />
                 <h4 className='artist'>{artist}</h4>
                 <h6 className='album'>{album}</h6>
+                <Button className='btn-select' variant="outline-primary">Select</Button>{' '}
             </div>
         </div>
     );
