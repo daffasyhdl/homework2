@@ -22,7 +22,7 @@ function Navbar() {
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={showSidebar}>
                         <li className="navbar-toggle">
-                            <h1 className="title">Jethro</h1>
+                            <h1 className="logo">Jethro</h1>
                         </li>
                         {SidebarData.map((item, index) => {
                             return (

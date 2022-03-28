@@ -4,6 +4,8 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    z-index: 10;
+
 }
 
 .menu-bars {
@@ -13,7 +15,7 @@
     color: #f5f5f5; 
 }
 
-.title{
+.logo{
     margin-left: 2rem;
     font-size: 2rem;
     background:none;

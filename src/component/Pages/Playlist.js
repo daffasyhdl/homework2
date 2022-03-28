@@ -1,12 +1,15 @@
 import React from 'react'
+import './Playlist.css';
 
-const Playlist = ({key, url, title, artist, album }) => {
+const Playlist = ({ key, url, title, artist, album }) => {
     return (
-        <div key ={key}>
-            <img src={url} alt="image" />
-            <h3>{title}</h3>
-            <h4>{artist}</h4>
-            <h6>{album}</h6>
+        <div className="playlist">
+            <div className='container' key={key}>
+                <h4 className='title'>{title}</h4>
+                <img className='image' src={url} alt="image" />
+                <h4 className='artist'>{artist}</h4>
+                <h6 className='album'>{album}</h6>
+            </div>
         </div>
     );
 }
