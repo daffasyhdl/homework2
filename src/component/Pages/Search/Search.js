@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Form, Card, Button} from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux';
+import { setToken } from '../../../reducer/reducer';
+
 
 function Search() {
     const CLIENT_ID = "f6d537bb5a8e46a497dc65fd3f3d71d4"
