@@ -24,7 +24,7 @@ export const SidebarData = [
         cName: 'nav-text'  
     },
     {
-        title: 'Add Playlist',
+        title: 'AddPlaylist',
         path: '/add',
         icon: <SiIcons.SiAddthis/>,
         cName: 'nav-text'  

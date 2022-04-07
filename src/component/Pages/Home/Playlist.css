@@ -1,0 +1,47 @@
+.hai{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding:1rem;
+}
+.container-main{
+  width: 80%;
+  height: auto;
+  /*border: 1px solid rgb(134, 27, 27);*/
+  margin-left:170px
+}
+.container-card{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    float: right;
+    padding: 5px;
+  }
+
+.card {
+  align-items: center;
+  justify-content: center;  
+}
+  
+.image {
+    width: 40%;
+    height: 30%;
+    display: flex;
+  }
+
+.title{
+  font-size: 17px;
+  color: rgb(8, 8, 8);
+  
+}
+.artist {
+    font-size: 13px;
+    color: rgb(8, 8, 8);
+}
+.album{
+  font-size: 12px;
+  color: #4c5262;
+  
+}
+ 
+

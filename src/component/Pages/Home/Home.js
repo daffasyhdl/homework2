@@ -1,10 +1,11 @@
 import React from 'react'
 import Playlist from './Playlist';
-import data from '../../data/index';
+import data from '../../../data/index';
 
 function Home() {
   return (
     <div className='home'>
+      <h1 className="hai">Hi Sobat Jethro!</h1>  
       <div className='albums'>
         {data.map((item) => {
           return (
