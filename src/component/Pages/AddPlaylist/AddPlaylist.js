@@ -1,64 +1,49 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap'
-import { useForm } from "react-hook-form";
-import './AddPlaylist.css';
+import FormPlaylist from './FormPlaylist';
+import { useEffect, useState } from "react";
 
 function AddPlaylist() {
 
-  const {
-    register,
-    formState: { errors },
-    trigger,
-  } = useForm();
+  const CLIENT_ID = "f6d537bb5a8e46a497dc65fd3f3d71d4"
+  const REDIRECT_URI = "http://localhost:3000"
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
+  const SCOPE = 'playlist-modify-private'
+  const RESPONSE_TYPE = "token"
+  const [userAccessToken, setToken] = useState("")
+
+  useEffect(() => {
+    const hash = window.location.hash
+    let token = window.localStorage.getItem("token")
+
+    if (!token && hash) {
+      token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+
+      window.location.hash = ""
+      window.localStorage.setItem("token", token)
+    }
+
+    setToken(token)
+
+  }, [])
 
   return (
-    <div className="container pt-5">
-      <div className="row justify-content-sm-center pt-5">
-        <div className="col-sm-6 shadow round pb-3">
-          <h1 className="text-center pt-3 text-secondary">Create Playlist</h1>
-          <form >
-            <div className="form-group">
-              <label className="col-form-label">Title:</label>
-              <input
-                type="text"
-                className={`form-control ${errors.title && "invalid"}`}
-                {...register("title", {
-                  required: "Title is Required",
-                  minLength: {
-                    value: 10,
-                    message: "Minimum Required length is 10"
-                  }
-                })}
+    <div>
+      <header className="App-header">
 
-                onKeyUp={() => {
-                  trigger("title");
-                }}
-              />
-              {errors.title && (
-                <small className="text-danger">{errors.title.message}</small>
-              )}
-            </div>
-            <div className="form-group">
-              <label className="col-form-label">Desciption:</label>
-              <textarea
-                className={`form-control ${errors.description && "invalid"}`}
-                {...register("description", {
-                  required: "Description is Required"
-                })}
-                onKeyUp={() => {
-                  trigger("description");
-                }}
-              />
-              {errors.description && (
-                <small className="text-danger">{errors.description.message}</small>
-              )}
-            </div>
-            <Button className="btnSearch" as="input" type="submit" value="Submit" />{' '}
-          </form>
-        </div>
-      </div>
+        {userAccessToken ?
+          <FormPlaylist/>
+          : <div></div>
+        }
+        {!userAccessToken ?
+          <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}>Login
+            to Spotify</a>
+          : <div></div>}
+
+
+
+      </header>
     </div>
+
   );
 
 }
